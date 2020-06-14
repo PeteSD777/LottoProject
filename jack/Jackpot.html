@@ -1,0 +1,786 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+            <title>Eurojackpot Symulator</title>
+          
+            <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" type="text/css">
+            <style type="text/css">
+                body
+                {
+                }
+                .white-ball
+                {
+                }
+    
+                .red-ball
+                {
+                    background-color:#eed91c;
+                }
+            </style>
+        </head>
+
+
+    <body data-gr-c-s-loaded="true">
+        <div id="wrapper"><div class="navbar navbar-default navbar-fixed-top">
+        <div class="navbar-header">
+            <ul class="nav navbar-nav">
+               
+            
+            </ul>
+    
+            <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        </div>
+        <div class="navbar-collapse collapse" id="navbar-main">
+            <ul class="nav navbar-nav">
+                
+                
+                
+            
+            </ul>
+            
+        </div>
+    </div><div style="margin-top:50px"></div>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <h1>Eurojackpot Simulator</h1>
+                    <div style="margin-bottom:10px">Jackpot: <input type="text" id="jackpot-amount" value="95000000"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-4">
+                    <table class="table table-bordered">
+                        <tbody>
+                            <tr><td colspan="7">Your numbers</td></tr>
+                            <tr class="text-center" id="ticket-1">
+                                <td class="white-ball">
+                                    <input class="twb1" type="text" size="2">
+                                </td>
+                                <td class="white-ball">
+                                    <input class="twb2" type="text" size="2">
+                                </td>
+                                <td class="white-ball">
+                                    <input class="twb3" type="text" size="2">
+                                </td>
+                                <td class="white-ball">
+                                    <input class="twb4" type="text" size="2">
+                                </td>
+                                <td class="white-ball">
+                                    <input class="twb5" type="text" size="2">
+                                </td>
+                                <td class="red-ball">
+                                    <input class="trb1" type="text" size="2">
+                                </td>
+                                <td class="red-ball">
+                                    <input class="trb2"
+                                    type="text" size="2">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="6">
+                                    <button class="btn btn-default" id="add-ticket">Add a ticket</button>
+                                    <button class="btn btn-default" id="remove-ticket">Delete your ticket</button>
+                                </td>
+                            </tr>
+                            <tr><td colspan="7">Draws</td></tr>
+                            <tr>
+                                <td class="white-ball" id="white-ball-1"></td>
+                                <td class="white-ball" id="white-ball-2"></td>
+                                <td class="white-ball" id="white-ball-3"></td>
+                                <td class="white-ball" id="white-ball-4"></td>
+                                <td class="white-ball" id="white-ball-5"></td>
+                                <td class="red-ball" id="red-ball-1"></td>
+                                <td class="red-ball"
+                                id="red-ball-2"></td>
+                            </tr>
+                            
+                            <tr>
+                                <td colspan="3">Combined draws</td>
+                                <td colspan="3" id="total-drawings">1</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Combined spendings:</td>
+                                <td colspan="3" id="total-spent">3</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Combined winnings:</td>
+                                <td colspan="3" id="total-winnings">$0</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Time spent</td>
+                                <td colspan="3" id="time-spent">0 years</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3">Probability</td>
+                                <td colspan="3" id="win-odds">1:&&</td>
+                            </tr>
+                            <tr>
+                                <td colspan="3"><span title="Zysk procentowy z losowań">Profit %</span>:</td>
+                                <td colspan="3" id="roi">-100%</td>
+                            </tr>
+    
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-md-4">
+                    <table class="table table-bordered">
+                        <tbody><tr>
+                            <td colspan="2">Winnings</td>
+                            <td>Winnings <br></td>
+                            <td>Probability of win</td>
+                        </tr>
+                        <tr>
+                            <td>5 whites + 2 Euro</td>
+                            <td id="5_2pb">0</td>
+                            <td id="5_2pb_won"> 0</td>
+                            <td id="5_2pb_odds">1:&&</td>
+                        </tr>
+                            
+                        <tr>
+                            <td>5 whites + 1 Euro</td>
+                            <td id="5_1pb">0</td>
+                            <td id="5_1pb_won"> 0</td>
+                            <td id="5_1pb_odds">1:&&</td>
+
+                        </tr>
+                        <tr>
+                            <td>5 Whites </td>
+                            <td id="5">0</td>
+                            <td id="5_won"> 0</td>
+                            <td id="5_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>4 Whites + 2 Euro</td>
+                            <td id="4_2pb">0</td>
+                            <td id="4_2pb_won"> 0</td>
+                            <td id="4_2pb_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>4 Whites + 1 Euro</td>
+                            <td id="4_1pb">0</td>
+                            <td id="4_1pb_won"> 0</td>
+                            <td id="4_1pb_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>4 Whites </td>
+                            <td id="4">0</td>
+                            <td id="4_won"> 0</td>
+                            <td id="4_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>3 Whites + 2 Euro</td>
+                            <td id="3_2pb">0</td>
+                            <td id="3_2pb_won"> 0</td>
+                            <td id="3_2pb_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>3 Whites + 1 Euro</td>
+                            <td id="3_1pb">0</td>
+                            <td id="3_1pb_won"> 0</td>
+                            <td id="3_1pb_odds">1:&&</td>
+
+                        </tr>
+                        <tr>
+                            <td>3 Whites </td>
+                            <td id="3">0</td>
+                            <td id="3_won">0</td>
+                            <td id="3_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>2 Whites + 2 Euro</td>
+                            <td id="2_2pb">0</td>
+                            <td id="2_2pb_won"> 0</td>
+                            <td id="2_2pb_odds">1:&&</td>
+                        </tr>
+                        <tr>
+                            <td>2 Whites +1Euro</td>
+                            <td id="2_1pb">0</td>
+                            <td id="2_1pb_won"> 0</td>
+                            <td id="2_1pb_odds">1: &&</td>
+
+                        </tr>
+                        
+                        <tr>
+                            <td>1 Whites + 2 Euro</td>
+                            <td id="1_2pb">0</td>
+                            <td id="1_2pb_won"> 0</td>
+                            <td id="1_2pb_odds">1: &&</td>
+                        </tr>
+                        
+                       
+                        <tr>
+                            <td colspan="4">Winnings: <input type="text" id="record-threshold" value="100"></td>
+                        </tr>
+                    </tbody></table>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <button class="btn btn-default" id="do-drawing">Draw</button>
+                    <button class="btn btn-default" id="continuous">Continuous</button>
+                    <button class="btn btn-default" id="stop">Stop</button>
+                    <br>
+                    <input type="checkbox" value="qp" id="qp"> <label for="qp">Random </label>
+                    
+                    <span class="text-muted" id="speed-indicator"></span>
+                </div>
+            </div>
+    
+            <div class="row">
+                <div class="col-md-3"></div>
+                
+            </div>
+    
+            <div class="row" style="margin-top:10px">
+                <div class="col-md-3"></div>
+                <div class="col-md-6">
+                   
+                </div>
+            </div>
+    
+            <div class="row" style="margin-top:25px">
+                <div class="col-md-3"></div>
+                <div class="col-md-6" id="recorded-wins"></div>
+            </div>
+           
+    
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+            <script type="text/javascript">
+            $(function() {
+    
+                drawing_count = 0;
+                drawings_won = 0;
+                losers = 0;
+                winners = 0;
+                total_won = 0;
+                total_spent = 0;
+                ticket_count = 1;
+                recorded_wins = [];
+    
+                won_by_type = {};
+                won_by_type["5_2pb"] = 0;
+                won_by_type["5_1pb"] = 0;
+                won_by_type["5"]=0;
+                won_by_type["4_2pb"] = 0;
+                won_by_type["4_1pb"] = 0;
+                won_by_type["4"]=0;
+                won_by_type["3_2pb"] = 0;
+                won_by_type["3_1pb"] = 0;
+                won_by_type["3"]=0;
+                won_by_type["2_2pb"] = 0;
+                won_by_type["2_1pb"] = 0;
+               
+                won_by_type["1_2pb"] = 0;
+               
+    
+                
+    
+                play_intervals = [];
+    
+               
+    
+                function add_ticket()
+                {
+                    ticket_count += 1;
+                    new_ticket_row = $("#ticket-1").clone();
+                    new_ticket_row.attr("id", "ticket-"+ticket_count);
+                    $("#ticket-"+(ticket_count-1)).after(new_ticket_row);
+                    return ticket_count;
+                }
+    
+                function remove_ticket()
+                {
+                    if(ticket_count > 1)
+                    {
+                        $("#ticket-"+ticket_count).remove();
+                        ticket_count -= 1;
+                    }
+                }
+    
+                function do_drawing()
+                {
+                    var current_drawing = Array(2);
+                    current_drawing[0] = Array(5);
+                    current_drawing[1] = Array(2);
+                    
+                    num = Math.random();
+    
+                   
+    
+                    for(var i = 0; i < 5; i++)
+                    {
+                        number = (Math.floor((Math.random() * 50) + 1));
+    
+                        if(current_drawing[0].indexOf(number) == -1)
+                            current_drawing[0][i] = number
+                        else
+                        {
+                            while(current_drawing[0].indexOf(number) != -1)
+                            {
+                                number = (Math.floor((Math.random() * 50) + 1));
+                            }
+                            current_drawing[0][i] = number
+                        }
+    
+                    }
+                    for(var i = 0; i < 2; i++)
+                    {
+                        number = (Math.floor((Math.random() * 10) + 1));
+    
+                        if(current_drawing[1].indexOf(number) == -1)
+                            current_drawing[1][i] = number
+                        else
+                        {
+                            while(current_drawing[1].indexOf(number) != -1)
+                            {
+                                number = (Math.floor((Math.random() * 10) + 1));
+                            }
+                            current_drawing[1][i] = number
+                        }
+    
+                    }
+                    
+    
+                    drawing_count++;
+    
+                    total_spent += ticket_count * 3;
+    
+                   
+    
+                    return current_drawing;
+                }
+    
+                function update_recorded_wins()
+                {
+                    $("#recorded-wins").empty();
+    
+                    for(var i = 0; i < recorded_wins.length; i++)
+                    {
+                        $("#recorded-wins").append("<div id=\"win-"+i+"\">" +
+                                                   "Won $" + recorded_wins[i]["amount"] + " " +
+                                                   "with the numbers: " +
+                                                   recorded_wins[i]["ticket"][0][0] + "-" +
+                                                   recorded_wins[i]["ticket"][0][1] + "-" +
+                                                   recorded_wins[i]["ticket"][0][2] + "-" +
+                                                   recorded_wins[i]["ticket"][0][3] + "-" +
+                                                   recorded_wins[i]["ticket"][0][4] + " " +
+                                                   "(" + recorded_wins[i]["ticket"][1][0] + 
+                                                   recorded_wins[i]["ticket"][1][1]+")" +
+                                                   "</div>");
+                    }
+                }
+    
+                function display_drawing(drawing)
+                {
+                    drawing[0] = drawing[0].sort(function (a, b) { return a - b });
+                    $("#white-ball-1").html(drawing[0][0]);
+                    $("#white-ball-2").html(drawing[0][1]);
+                    $("#white-ball-3").html(drawing[0][2]);
+                    $("#white-ball-4").html(drawing[0][3]);
+                    $("#white-ball-5").html(drawing[0][4]);
+                    $("#red-ball-1").html(drawing[1][0]);
+                    $("#red-ball-2").html(drawing[1][1]);
+    
+                  
+    
+                    $("#total-drawings").html(drawing_count.toLocaleString());
+                    $("#total-spent").html("$" + total_spent.toLocaleString());
+                    $("#total-winnings").html("$" + total_won.toLocaleString());
+                    $("#time-spent").html("" + Math.round((drawing_count / 2) / 52, 2).toLocaleString() + "years");
+                    $("#win-odds").html("1:"+Math.round(drawing_count/drawings_won*100)/100);
+                    $("#roi").html(Math.round(total_won/total_spent*100)-100+"%");
+    
+                    $("#5_2pb").html(won_by_type["5_2pb"]);
+                    $("#5_1pb").html(won_by_type["5_1pb"]);
+                    $("#5").html(won_by_type["5"]);
+                    $("#4_2pb").html(won_by_type["4_2pb"]);
+                    $("#4_1pb").html(won_by_type["4_1pb"]);
+                    $("#4").html(won_by_type["4"]);
+                    $("#3_2pb").html(won_by_type["3_2pb"]);
+                    $("#3_1pb").html(won_by_type["3_1pb"]);
+                    $("#3").html(won_by_type["3"]);
+                    $("#2_2pb").html(won_by_type["2_2pb"]);
+                    $("#2_1pb").html(won_by_type["2_1pb"]);
+                   
+                    $("#1_2pb").html(won_by_type["1_2pb"]);
+                   
+                  
+    
+                    $("#5_2pb_won").html("$"+won_by_type["5_2pb"]*get_jackpot());
+                    $("#5_1pb_won").html("$"+won_by_type["5_1pb"]
+                    *6000000);
+                    $("#5_won").html("$"+won_by_type["5"]*800000);
+                    $("#4_2pb_won").html("$"+won_by_type["4_2pb"]*4000000);
+                    $("#4__1pb_won").html("$"+won_by_type["4_1pb"]*100000);
+                    $("4_won").html("$" +won_by_type["4"]*6000);
+                    $("#3_2pb_won").html("$"+won_by_type["3_2pb"]*15000);
+                    $("#3_1pb_won").html("$"+won_by_type["3_1pb"]*1000);
+                    $("3_won").html("$" +won_by_type["3"]*50);
+                    $("#2_2pb_won").html("$"+won_by_type["2_2pb"]*100);
+                    $("#2_1pb_won").html("$" + won_by_type["2_1pb"]*50);
+                   
+                    $("#1_2pb_won").html("$"+won_by_type["1_2pb"]*50);
+                 
+    
+                    $("#5_2pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["5_2pb"]*100)/100).toFixed(2));
+                    $("#5_1pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["5_1pb"]*100)/100).toFixed(2));
+                    $("#5_odds").html("1:"+(Math.round(drawing_count/won_by_type["5"]*100)/100).toFixed(2));
+                    $("#4_2pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["4_2pb"]*100)/100).toFixed(2));
+                    $("#4_1pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["4_1pb"]*100)/100).toFixed(2));
+                    $("#4_odds").html("1"+(Math.round(drawing_count/won_by_type["4"]*100/100).toFixed(2)))
+                    $("#3_2pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["3_2pb"]*100)/100).toFixed(2));
+                    $("#3_1pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["3_1pb"]*100)/100).toFixed(2));
+                    $("#3_odds").html("1:"+(Math.round(drawing_count/won_by_type["3"]*100)/100).toFixed(2))
+                    $("#2_2pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["2_2pb"]*100)/100).toFixed(2));
+                    $("#2_1pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["2_1pb"]*100)/100).toFixed(2));
+               
+                    $("#1_2pb_odds").html("1:"+(Math.round(drawing_count/won_by_type["1_2pb"]*100)/100).toFixed(2));
+                
+                 
+    
+                    update_recorded_wins();
+                }
+    
+                function quick_pick_numbers()
+                {
+                    var ticket = Array(2);
+                    ticket[0] = Array(5);
+                    ticket[1] = Array(2);
+    
+                    for(var i = 0; i < 5; i++)
+                    {
+                        number = (Math.floor((Math.random() * 50) + 1));
+    
+                        if(ticket[0].indexOf(number) == -1)
+                            ticket[0][i] = number
+                        else
+                        {
+                            while(ticket[0].indexOf(number) != -1)
+                            {
+                                number = (Math.floor((Math.random() * 50) + 1));
+                            }
+                            ticket[0][i] = number
+                        }
+    
+                    }
+                    for(var i = 0; i < 2; i++)
+                    {
+                        number = (Math.floor((Math.random() * 10) + 1));
+    
+                        if(ticket[1].indexOf(number) == -1)
+                            ticket[1][i] = number
+                        else
+                        {
+                            while(ticket[1].indexOf(number) != -1)
+                            {
+                                number = (Math.floor((Math.random() * 10) + 1));
+                            }
+                            ticket[1][i] = number
+                        }
+    
+                    }
+                    
+    
+                    ticket[0].sort(function(a, b) { return a - b });
+                    ticket[1].sort(function(a,b){return a-b});
+    
+                    return ticket;
+                }
+    
+                function quick_pick()
+                {
+                    for(var i = 1; i <= ticket_count; i++)
+                    {
+                        var ticket = quick_pick_numbers();
+                        $("#ticket-" + i + " .twb1").val(ticket[0][0]);
+                        $("#ticket-" + i + " .twb2").val(ticket[0][1]);
+                        $("#ticket-" + i + " .twb3").val(ticket[0][2]);
+                        $("#ticket-" + i + " .twb4").val(ticket[0][3]);
+                        $("#ticket-" + i + " .twb5").val(ticket[0][4]);
+                        $("#ticket-" + i + " .trb1").val(ticket[1][0]);
+                        $("#ticket-" + i + " .trb2").val(ticket[1][1]);
+                    }
+                }
+    
+                function get_tickets()
+                {
+                    tickets = Array();
+    
+                    for(var i = 1; i <= ticket_count; i++)
+                    {
+                        var ticket = Array(2);
+                        ticket[0] = Array(5);
+                        ticket[1] = Array(2);
+    
+                        ticket[0][0] = parseInt($("#ticket-" + i + " .twb1").val());
+                        ticket[0][1] = parseInt($("#ticket-" + i + " .twb2").val());
+                        ticket[0][2] = parseInt($("#ticket-" + i + " .twb3").val());
+                        ticket[0][3] = parseInt($("#ticket-" + i + " .twb4").val());
+                        ticket[0][4] = parseInt($("#ticket-" + i + " .twb5").val());
+    
+                        ticket[1][0] = parseInt($("#ticket-"+ i + " .trb1").val());
+                        tickets.push(ticket);
+                        ticket[1][1]=parseInt($("#ticket-" + i
+                        + " .trb2").val());
+                    }
+    
+                    return tickets;
+                }
+    
+                function get_jackpot()
+                {
+                    return parseInt($("#jackpot-amount").val().replace(/,/g, ''));
+                }
+    
+               
+    
+                function record_win(ticket, drawing, amount)
+                {
+                    win = {}
+                    win["ticket"] = ticket;
+                    win["drawing"] = drawing;
+                    win["amount"] = amount;
+                    recorded_wins.push(win);
+                }
+    
+                function get_record_threshold()
+                {
+                    return parseInt($("#record-threshold").val().replace(/,/g, ''));
+                }
+    
+                function check_ticket(ticket, drawing)
+                {
+                    matching_white = 0;
+                    for(var i = 0; i < ticket[0].length; i++)
+                    {
+                        if(drawing[0].indexOf(ticket[0][i]) != -1)
+                            matching_white++;
+                    }
+    
+                    matching_red = 0;
+                    for(var i =0; i<ticket[1].length; i++)
+                    {
+                        if(drawing[1].indexOf(ticket[1][i]) != -1) matching_red++;
+                            
+                    }
+
+                    if(matching_white == 5 && matching_red==2)
+                    {
+                        alert("jackpot");
+                        won_by_type["5_2pb"] +=1;
+                        won = get_jackpot();
+
+                        if(won> get_record_threshold())
+                            record_win(ticket, drawing, won);
+                    }
+
+                    if(matching_white ==5 && matching_red==1)
+                    {
+                        won_by_type["5_1pb"] +=1;
+                        won = 6000000;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);                        
+                    }
+                    if(matching_white ==5)
+                    {
+                        won_by_type["5"] +=1;
+                        won = 800000;
+
+                        if(won>get_record_threshold())
+                            record_win(ticket, drawing, won);
+                    }
+                    if(matching_white==4 && matching_red==2)
+                {
+                    won_by_type["4_2pb"] +=1;
+                    won = 100000;
+
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+
+                }
+
+                if(matching_white==4 && matching_red==1)
+                {
+                    won_by_type["4_1pb"] +=1;
+                    won=15000;
+
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+                }
+
+                if(matching_white==4)
+                {
+                    won_by_type["4"] +=1;
+                    won=5000;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+                }
+
+                if(matching_white==3 && matching_red==2)
+                {
+                    won_by_type["3_2pb"] +=1;
+                    won=500;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+
+                }
+
+                if(matching_white==3 && matching_red==1)
+                {
+                    won_by_type["3_1pb"] +=1;
+                    won =200;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+                }
+
+                if(matching_white==3 && matching_red==0)
+                {
+                    won_by_type["3"] +=1;
+                    won =50;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+                }
+
+                if(matching_white==2 && matching_red==2)
+                {
+                    won_by_type["2_2pb"] +=1;
+                    won=200;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+
+                }
+
+                if(matching_white==2 && matching_red==1)
+                {
+                    won_by_type["2_1pb"] +=1;
+                    won = 50
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+
+                }
+
+               
+
+                if(matching_white==1 && matching_red==2)
+                {
+                    won_by_type["1_2pb"] +=1;
+                    won=50;
+
+                    if(won>get_record_threshold())
+                        record_win(ticket, drawing, won);
+                    return won;
+                    
+                }
+
+                
+
+            
+          
+
+               
+
+               
+              
+                return 0
+
+            }
+
+                function check_tickets(tickets, drawing)
+                {
+                    var amount_won = 0;
+                    for(var i = 0; i < tickets.length; i++)
+                    {
+                        amount_won += check_ticket(tickets[i], drawing);
+                    }
+                    return amount_won;
+                }
+                    
+
+                   
+                  
+
+
+
+                   
+    
+                    
+                function execute_play()
+                {
+                    if($("#qp").prop('checked') == true)
+                        quick_pick();
+    
+                    drawing = do_drawing();
+                    display_drawing(drawing);
+                    won = check_tickets(get_tickets(), drawing);
+                    if(won > 0)
+                    {
+                        drawings_won++;
+                    }
+    
+                    total_won += won;
+                }
+    
+                $("#do-drawing").click(execute_play);
+    
+                $("#continuous").click(function()
+                {
+                    play_intervals.push(setInterval(execute_play, 30));
+                    $("#speed-indicator").html("Speed: " + play_intervals.length);
+                });
+    
+                $("#stop").click(function()
+                {
+                    for(var i = 0; i < play_intervals.length; i++)
+                    {
+                        clearInterval(play_intervals[i])
+                    }
+                    $("#speed-indicator").html('');
+                    play_intervals = [];
+                });
+    
+                $("#add-ticket").click(function()
+                {
+                    add_ticket();
+                });
+    
+                $("#remove-ticket").click(function()
+                {
+                    remove_ticket();
+                });
+    
+                quick_pick();
+                execute_play();
+    
+            });
+            </script>
+           
+            <script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+        </div>
+        
+    
+    
+</body>
+</html>
